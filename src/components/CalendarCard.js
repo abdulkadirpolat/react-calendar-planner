@@ -1,19 +1,15 @@
-import React, { useState } from "react";
-// import db, { auth } from "../firebase";
- 
+import React from "react";
 import "react-datepicker/dist/react-datepicker.css";
  
-function CalendarCard({ date, fullDate, onClick }) {
- 
+function CalendarCard({ date, fullDate, onClick, currentDate }) {
 
   return (
     <li
     id={fullDate}
-      className="bg-gray-100 p-5 h-28 border relative"
+      className= {`p-5 h-28 border relative ${ currentDate === fullDate ? "bg-blue-500" : ""}`}
       onClick={onClick}
     >
       <p className="absolute top-1 right-1">{date}</p>
-
     </li>
   );
 }
