@@ -29,7 +29,7 @@ function Login() {
         );
        const userId =  JSON.parse(localStorage.getItem("user"));
        if (userId) {
-        navigate("/dashboard");
+        navigate("/dashboard")
        }
 
       })

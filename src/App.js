@@ -1,5 +1,4 @@
-import React from "react";
-// import { Home, Projects, About, Error } from "./pages/index";
+import React,{ useEffect, useState } from "react";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
@@ -13,12 +12,19 @@ import { useUser } from "./context/GlobalContext";
 
 function App() {
   const { currentUser } = useUser();
+  const [user , setUser] = useState( currentUser || null);
+  useEffect(() => {
+    if(currentUser){
+      setUser(currentUser);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
 
   return (
     <div className="w-full min-h-screen font-sans bg-gray-light">
       <Router>
         <Routes>
-          {currentUser ? (
+          {user ? (
             <Route path="dashboard" element={<Dashboard />} />
           ) : null}
           <Route path="/" element={<Login />} />

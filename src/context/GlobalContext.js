@@ -3,8 +3,7 @@ import { useContext, createContext, useState } from "react";
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(true);
-
+  const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem("user")) || null,);
   const values = {
     currentUser,
     setCurrentUser,
